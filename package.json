@@ -1,0 +1,26 @@
+{
+  "name": "user-errors",
+  "version": "1.0.0",
+  "description": "Log errors by project and by user.",
+  "main": "writer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/george-dragnea/user-errors.git"
+  },
+  "keywords": [
+    "log",
+    "errors"
+  ],
+  "author": "George Dragnea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/george-dragnea/user-errors/issues"
+  },
+  "homepage": "https://github.com/george-dragnea/user-errors#readme",
+  "dependencies": {
+    "qs": "^6.5.2"
+  }
+}
