@@ -1,0 +1,17 @@
+{
+  "writer": {
+    "port": 8888,
+    "ip": "localhost"
+  },
+  "reader": {
+    "port": 9999,
+    "ip": "localhost"
+  },
+  "database": {
+    "mongodb": {
+      "url": "mongodb://localhost:27017/",
+      "database": "mydb",
+      "collection": "logs"
+    }
+  }
+}
