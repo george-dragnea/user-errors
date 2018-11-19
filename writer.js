@@ -27,6 +27,9 @@ server.on('request', (req, res) => {
         project: 'project' in post ? post.project : null,
         user: 'user' in post ? post.user : null,
         error: 'error' in post ? post.error : null,
+        ip: 'ip' in post ? post.ip : null,
+        url: 'url' in post ? post.url : null,
+        extra: 'extra' in post ? post.extra : null,
       };
       // Insert log into database
       if (log.error !== null) {
