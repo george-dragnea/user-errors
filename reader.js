@@ -15,13 +15,14 @@ mongodb.MongoClient.connect(config.database.mongodb.url,
 // Create a HTTP server to listen
 const server = http.createServer().listen(config.reader.port, config.reader.ip);
 server.on('request', (req, res) => {
-  db.collection(config.database.mongodb.collection).find({}).toArray((err, result) => {
+  // db.collection(config.database.mongodb.collection).drop();
+  db.collection(config.database.mongodb.collection).find({}).sort({ date: -1 }).toArray((err, result) => {
     if (err) throw err;
     res.writeHeader(200, { 'Content-Type': 'text/html' });
     res.write('<html><title>User Errors</title><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><body><div class="container-fluid"><table class="table">');
-    res.write('<tr><th>Project</th><th>User</th><th>Error</th><th>IP</th><th>URL</th><th>Extra</th></tr>');
+    res.write('<tr><th>Project</th><th>User</th><th>Error</th><th>IP</th><th>URL</th><th>Extra</th><th>Data</th><th>Count</th></tr>');
     result.forEach((item) => {
-      res.write(`<tr><td>${item.project ? item.project : ''}</td><td>${item.user ? item.user : ''}</td><td>${item.error ? item.error : ''}</td><td>${item.ip ? item.ip : ''}</td><td>${item.url ? item.url : ''}</td><td>${item.extra ? item.extra : ''}</td></tr>`);
+      res.write(`<tr><td>${item.log.project ? item.log.project : ''}</td><td>${item.log.user ? item.log.user : ''}</td><td>${item.log.error ? item.log.error : ''}</td><td>${item.log.ip ? item.log.ip : ''}</td><td>${item.log.url ? item.log.url : ''}</td><td>${item.log.extra ? item.log.extra : ''}</td><td>${item.date.toUTCString()}</td><td>${item.count}</td></tr>`);
     });
     res.end('</div></table></body></html>');
   });
